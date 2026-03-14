@@ -48,81 +48,88 @@ export function ComparePage() {
         <div>
             <h1>Comparar Propiedades</h1>
 
-            <table>
-            <thead>
-                <tr>
-                <th>Metric</th>
+            <table className="w-full border rounded-lg overflow-hidden">
+
+            <thead className="bg-muted">
+            <tr>
+                <th className="p-3 text-left">Metric</th>
+
                 {properties.map(p => (
-                    <th key={p.id}>
-                    {p.title}
-                    <button onClick={() => removeProperty(p.id)}>
+                <th key={p.id} className="p-3 text-left">
+                    {p.title}   
+
+                    <button
+                    className="ml-2 text-red-500"
+                    onClick={() => removeProperty(p.id)}
+                    >
                     Remove
                     </button>
                 </th>
-
                 ))}
-                </tr>
+            </tr>
             </thead>
 
-            <tbody>
 
-                {/* Price */}
-                <tr>
-                <td>Price</td>
-                {properties.map(p => (
-                    <td
-                    key={p.id}
-                    style={{
-                        fontWeight: p.price === lowestPrice ? "bold" : "normal"
-                    }}
-                    >
-                    {p.price}
-                    </td>
-                ))}
-                </tr>
+           <tbody>
 
-                {/* Bedrooms */}
-                <tr>
-                <td>Bedrooms</td>
-                {properties.map(p => (
-                    <td key={p.id}>{p.bedrooms}</td>
-                ))}
-                </tr>
+<tr className="border-t">
+  <td className="p-3 font-medium">Price</td>
 
-                {/* Bathrooms */}
-                <tr>
-                <td>Bathrooms</td>
-                {properties.map(p => (
-                    <td key={p.id}>{p.bathrooms}</td>
-                ))}
-                </tr>
+  {properties.map(p => (
+    <td
+      key={p.id}
+      className={`p-3 ${p.price === lowestPrice ? "font-bold text-green-600" : ""}`}
+    >
+      ${p.price}
+    </td>
+  ))}
+</tr>
 
-                {/* Area */}
-                <tr>
-                <td>Area</td>
-                {properties.map(p => (
-                    <td
-                    key={p.id}
-                    style={{
-                        fontWeight: p.area === largestArea ? "bold" : "normal"
-                    }}
-                    >
-                    {p.area}
-                    </td>
-                ))}
-                </tr>
+<tr className="border-t">
+  <td className="p-3 font-medium">Bedrooms</td>
 
-                {/* Price per sqm */}
-                <tr>
-                <td>Price / sqm</td>
-                {properties.map(p => (
-                    <td key={p.id}>
-                    {(p.price / p.area).toFixed(2)}
-                    </td>
-                ))}
-                </tr>
+  {properties.map(p => (
+    <td key={p.id} className="p-3">
+      {p.bedrooms}
+    </td>
+  ))}
+</tr>
 
-            </tbody>
+<tr className="border-t">
+  <td className="p-3 font-medium">Bathrooms</td>
+
+  {properties.map(p => (
+    <td key={p.id} className="p-3">
+      {p.bathrooms}
+    </td>
+  ))}
+</tr>
+
+<tr className="border-t">
+  <td className="p-3 font-medium">Area</td>
+
+  {properties.map(p => (
+    <td
+      key={p.id}
+      className={`p-3 ${p.area === largestArea ? "font-bold text-blue-600" : ""}`}
+    >
+      {p.area}
+    </td>
+  ))}
+</tr>
+
+<tr className="border-t">
+  <td className="p-3 font-medium">Price / sqm</td>
+
+  {properties.map(p => (
+    <td key={p.id} className="p-3">
+      {(p.price / p.area).toFixed(2)}
+    </td>
+  ))}
+</tr>
+
+</tbody>
+
             </table>
 
         </div>

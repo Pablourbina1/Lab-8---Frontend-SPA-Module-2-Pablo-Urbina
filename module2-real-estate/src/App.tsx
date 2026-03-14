@@ -19,6 +19,9 @@ import { HomePage } from '@/pages/HomePage';
 import { NewPropertyPage } from '@/pages/NewPropertyPage';
 import { PropertyDetailPage } from '@/pages/PropertyDetailPage';
 
+import { ComparePage } from '@/pages/ComparePage'
+
+
 /**
  * Componente principal de la aplicación.
  *
@@ -54,6 +57,13 @@ function App(): React.ReactElement {
                 <Home className="h-4 w-4" />
                 Inicio
               </Link>
+
+               <Link
+                to="/compare"
+                className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Comparar
+              </Link>
             </nav>
           </div>
         </header>
@@ -75,6 +85,9 @@ function App(): React.ReactElement {
             {/* Página de detalle de propiedad */}
             <Route path="/property/:id" element={<PropertyDetailPage />} />
 
+            {/* Página de comparacion de propiedades */}
+            <Route path="/compare" element={<ComparePage />} />
+
             {/* Ruta 404 - Página no encontrada */}
             <Route
               path="*"
@@ -91,6 +104,9 @@ function App(): React.ReactElement {
                 </div>
               }
             />
+
+            
+
           </Routes>
         </main>
 
