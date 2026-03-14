@@ -19,6 +19,9 @@ import type { Property } from '@/types/property';
 import { PROPERTY_TYPE_LABELS, OPERATION_TYPE_LABELS } from '@/types/property';
 import { formatPrice, formatArea, truncateText } from '@/lib/utils';
 
+import { CompareButton } from '@/components/CompareButton';
+
+
 /**
  * Props del componente PropertyCard.
  */
@@ -122,6 +125,9 @@ export function PropertyCard({ property, onDelete }: PropertyCardProps): React.R
           <Link to={`/property/${property.id}`}>Ver detalles</Link>
         </Button>
 
+        {/* Botón comparar propiedad*/}
+        <CompareButton property = {property}/>
+
         {/* Botón eliminar (si se proporciona callback) */}
         {onDelete && (
           <Button
@@ -133,6 +139,8 @@ export function PropertyCard({ property, onDelete }: PropertyCardProps): React.R
             <span aria-hidden="true">×</span>
           </Button>
         )}
+
+        
       </CardFooter>
     </Card>
   );
