@@ -27,7 +27,7 @@ export function ImageGallery({ images, title }: ImageGalleryProps) {
       {/* Imagen principal */}
       <div className="rounded-lg overflow-hidden">
         <img
-          src={images[0]}
+          src={images[selectedIndex ?? 0]}
           alt={title}
           className="w-full h-[400px] object-cover cursor-pointer"
           onClick={() => handleClick(0)}
