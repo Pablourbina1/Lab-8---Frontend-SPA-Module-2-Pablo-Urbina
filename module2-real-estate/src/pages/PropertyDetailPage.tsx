@@ -22,6 +22,9 @@ import {
 } from '@/types/property';
 import { formatPrice, formatArea } from '@/lib/utils';
 
+import { ImageGallery } from "@/components/ImageGallery"
+
+
 /**
  * Página de detalle de una propiedad.
  */
@@ -78,12 +81,12 @@ export function PropertyDetailPage(): React.ReactElement {
         {/* Columna principal */}
         <div className="lg:col-span-2 space-y-6">
           {/* Imagen principal */}
-          <div className="relative rounded-lg overflow-hidden">
-            <img
-              src={mainImage}
-              alt={property.title}
-              className="w-full h-[400px] object-cover"
+          <div className="relative">
+            <ImageGallery
+              images={property.images}
+              title={property.title}
             />
+
             <span
               className={`absolute top-4 left-4 px-4 py-2 text-sm font-semibold rounded-full ${
                 property.operationType === 'venta'
@@ -94,20 +97,6 @@ export function PropertyDetailPage(): React.ReactElement {
               {OPERATION_TYPE_LABELS[property.operationType]}
             </span>
           </div>
-
-          {/* Galería de imágenes adicionales */}
-          {property.images.length > 1 && (
-            <div className="grid grid-cols-4 gap-2">
-              {property.images.slice(1).map((img, index) => (
-                <img
-                  key={index}
-                  src={img}
-                  alt={`${property.title} - Imagen ${index + 2}`}
-                  className="w-full h-24 object-cover rounded-lg"
-                />
-              ))}
-            </div>
-          )}
 
           {/* Descripción */}
           <Card>
