@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { ImageModal } from "@/pages/ImageModal"
+
 
 interface ImageGalleryProps {
   images: string[]
@@ -30,7 +32,7 @@ export function ImageGallery({ images, title }: ImageGalleryProps) {
           src={images[selectedIndex ?? 0]}
           alt={title}
           className="w-full h-[400px] object-cover cursor-pointer"
-          onClick={() => handleClick(0)}
+          onClick={() => handleClick(selectedIndex ?? 0)}
         />
       </div>
 
@@ -49,12 +51,14 @@ export function ImageGallery({ images, title }: ImageGalleryProps) {
         </div>
       )}
 
-      {/* Debug temporal */}
       {selectedIndex !== null && (
-        <p className="text-sm text-muted-foreground">
-          Imagen seleccionada: {selectedIndex + 1}
-        </p>
+        <ImageModal
+          images={images}
+          currentIndex={selectedIndex}
+          onClose={() => setSelectedIndex(null)}
+        />
       )}
+
 
     </div>
   )
